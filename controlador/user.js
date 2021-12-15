@@ -48,3 +48,20 @@ exports.updateData = (req, res)=>{
         }
     )
 }
+
+//deelete data
+
+exports.deleteData = (req, res)=>{
+    const {id} = req.params
+
+    modelo.deleteOne(
+        { _id: parserId(id) },
+        (err, docs)=>{
+            if(err){
+                res.send({error: err})
+            }else{
+                res.send({data: docs})
+            }
+        }
+    )
+}
